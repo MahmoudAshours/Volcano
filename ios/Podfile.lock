@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - nav_router (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - nav_router (from `.symlinks/plugins/nav_router/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  nav_router:
+    :path: ".symlinks/plugins/nav_router/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  nav_router: a4bf0af66c082e6db0c3c895e6dfeba6f19777ff
+
+PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
+
+COCOAPODS: 1.8.4
