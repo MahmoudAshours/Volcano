@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:volcano/custom_page.dart';
+import 'package:volcano/Screens/custom_page.dart';
 
 class DepHome extends StatelessWidget {
   @override

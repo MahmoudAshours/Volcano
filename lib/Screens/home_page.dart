@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotlightnavbar/spotlightnavbar.dart';
-import 'package:volcano/details.dart';
-import 'package:volcano/know_more.dart';
+import 'package:volcano/Screens/details.dart';
+import 'package:volcano/Screens/know_more.dart';
 
 class HomePage extends StatefulWidget {
   @override
