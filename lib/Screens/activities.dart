@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class KnowMore extends StatelessWidget {
+class Activities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

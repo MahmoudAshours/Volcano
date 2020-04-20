@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spotlightnavbar/spotlightnavbar.dart';
+import 'package:volcano/Screens/activities.dart';
+import 'package:volcano/Screens/articles.dart';
 import 'package:volcano/Screens/details.dart';
-import 'package:volcano/Screens/know_more.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,24 +11,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentItem = 0;
-
-  final List pagesList = List.unmodifiable([DepHome(), KnowMore()]);
+  final List pagesList =
+      List.unmodifiable([DepHome(), Activities(), Articles()]);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff121212),
+      backgroundColor: const Color(0xff303030),
       bottomNavigationBar: SpotLightNavBar(
         animationCurve: Curves.easeInOut,
-        spotLightColor: Color(0xffBB86FC),
-        items: [Icon(Icons.transform), Icon(Icons.transform)],
-        onItemPressed: (i) {
-          setState(() {
-            currentItem = i;
-          });
-        },
+        spotLightColor: const Color(0xffBB86FC),
+        items: [
+          Icon(Icons.transform),
+          Icon(Icons.transform),
+          Icon(Icons.airline_seat_recline_extra)
+        ],
+        onItemPressed: (int i) => setState(() => currentItem = i),
         selectedItemColor: Colors.orangeAccent,
-        bottomNavBarColor: Color(0xff121212),
+        bottomNavBarColor: Color(0xff303030),
       ),
       body: pagesList[currentItem],
     );

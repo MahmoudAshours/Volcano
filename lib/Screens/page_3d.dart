@@ -3,10 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 import 'package:nav_router/nav_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:volcano/Screens/home_page.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class Page3D extends StatefulWidget {
+  Page3D({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -14,7 +15,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+class _MyHomePageState extends State<Page3D> with TickerProviderStateMixin {
   Scene _scene;
   Object _cube;
   AnimationController _controller, _inController;
@@ -22,8 +23,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   double test;
   double phi;
 
-  List<Offset> offsets = List();
-  GlobalKey key = GlobalKey();
   void _onSceneCreated(Scene scene) {
     _scene = scene;
     scene.camera.position.z = 50;
@@ -51,13 +50,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         fileName: 'assets/Cube/cube.obj',
       );
       cube.name = "Object number $i";
-      test = cube.position.x;
       _cube.add(cube);
-
-      offsets.add(
-        Offset((cube.position.x - cube.position.z) * 10 + r,
-            (cube.position.z + cube.position.y) * -10 + r),
-      );
     }
     scene.world.add(_cube);
   }
@@ -65,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    checkIntro();
     _controller = AnimationController(
         duration: Duration(milliseconds: 30000), vsync: this)
       ..addListener(
@@ -99,50 +93,28 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _controller.stop();
-        },
-      ),
+      floatingActionButton:
+          FloatingActionButton(onPressed: () => _controller.stop()),
       backgroundColor: Color(0xff121212),
       body: Center(
         child: InkWell(
-          onTap: () {
-            print('hello');
-          },
-          onLongPress: () {
-            _inController.forward().whenComplete(
-              () {
-                _inController..reverse();
-                routePush(HomePage(), RouterType.scale);
-              },
-            );
-          },
-          splashColor: Colors.blue,
-          onTapDown: (tapDownDetails) {
-            var s = Offset(
-                tapDownDetails.globalPosition.dx -
-                    MediaQuery.of(context).size.width / 2,
-                tapDownDetails.globalPosition.dy -
-                    MediaQuery.of(context).size.height / 2);
-            print(s);
-
-            for (int i = 0; i < offsets.length; i++) {
-              print(offsets[i]);
-              if (offsets[i] == s) {
-                print("Match ${offsets[i]}");
-              }
-            }
-          },
-          child: Cube(
-            key: key,
-            onObjectCreated: (o) {
-              print(o.position.x);
+          onLongPress: () => _inController.forward().whenComplete(
+            () {
+              _inController..reverse();
+              routePush(HomePage(), RouterType.scale);
             },
+          ),
+          splashColor: Colors.blue,
+          child: Cube(
             onSceneCreated: _onSceneCreated,
           ),
         ),
       ),
     );
+  }
+
+  Future<Null> checkIntro() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.getBool('intro') ?? prefs.setBool('intro', false);
   }
 }

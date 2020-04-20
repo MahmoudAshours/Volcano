@@ -23,7 +23,7 @@ class CustomPage extends StatelessWidget {
           width: 50,
           height: 200,
           child: Cube(
-            onSceneCreated: (scene) {
+            onSceneCreated: (Scene scene) {
               var _cube = Object(
                 scale: Vector3(2.0, 2.0, 2.0),
                 backfaceCulling: false,
