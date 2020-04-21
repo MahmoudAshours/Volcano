@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cube/flutter_cube.dart';
 import 'package:nav_router/nav_router.dart';
 import 'package:volcano/Screens/custom_page.dart';
 
@@ -14,14 +13,14 @@ class DepHome extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Text(
-              'Home Page',
+              'Home',
               style: TextStyle(
                 color: Colors.purple[200],
               ),
             ),
           ),
           leading: SizedBox.shrink(),
-          backgroundColor: Color(0xff121212),
+          backgroundColor: const Color(0xff303030),
         ),
         SliverList(
           delegate: SliverChildListDelegate(

@@ -9,6 +9,7 @@ void main() async {
     await checkIntro() ? IntroPage() : MyApp(),
   );
 }
+
 /// Check if it's the user first time in the app.
 Future<bool> checkIntro() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();

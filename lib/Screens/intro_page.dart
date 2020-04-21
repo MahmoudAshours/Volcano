@@ -1,6 +1,6 @@
 import 'package:dot_pagination_swiper/dot_pagination_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:nav_router/nav_router.dart'; 
+import 'package:nav_router/nav_router.dart';
 import 'package:volcano/Screens/page_3d.dart';
 import 'package:volcano/Themes/themes.dart';
 

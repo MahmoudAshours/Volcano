@@ -6,13 +6,13 @@ class CustomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff121212),
+      backgroundColor: const Color(0xff121212),
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.only(top: 16.0),
           child: Text('Detailed info'),
         ),
-        backgroundColor: Color(0xff121212),
+        backgroundColor: const Color(0xff121212),
         leading: GestureDetector(
           onTap: () => pop(),
           child: Icon(Icons.arrow_back_ios, color: Colors.purple[300]),
