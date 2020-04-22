@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:volcano/Screens/activities_details.dart';
+import 'package:volcano/Components/ActivitiesComponents/activity_bar.dart';
+import 'package:volcano/Screens/activities_timeline.dart';
 
 class Activities extends StatelessWidget {
   @override
@@ -10,6 +11,7 @@ class Activities extends StatelessWidget {
         SliverAppBar(
           elevation: 3,
           forceElevated: true,
+          centerTitle: true,
           title: Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Text(
@@ -20,35 +22,13 @@ class Activities extends StatelessWidget {
             ),
           ),
           leading: SizedBox.shrink(),
-          backgroundColor: const Color(0xff303030),
         ),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    width: 300,
-                    height: 50,
-                    child: Center(child: Text("Share your activity!")),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        ActivityBar(),
         SliverAnimatedList(
           initialItemCount: 20,
           itemBuilder: (BuildContext context, int index, Animation animation) =>
               GestureDetector(
-            onTap: () => routePush(ActivitiesDetails(), RouterType.fade),
+            onTap: () => routePush(ActivitiesTimeLine(), RouterType.fade),
             child: Padding(
               padding:
                   const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 10.0),
@@ -70,21 +50,7 @@ class Activities extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Hello'),
-                          SizedBox(height: 50),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(Icons.trip_origin),
-                              Icon(Icons.delete),
-                            ],
-                          )
-                        ],
-                      ),
+                      child: Placeholder(),
                     ),
                   ),
                 ],
