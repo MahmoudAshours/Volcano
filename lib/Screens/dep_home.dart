@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nav_router/nav_router.dart';
+import 'package:volcano/Components/PostsComponents/post_avatar.dart';
 import 'package:volcano/Components/PostsComponents/post_bar.dart';
+import 'package:volcano/Components/PostsComponents/post_reacts.dart';
 import 'package:volcano/Screens/custom_page.dart';
 
 class DepHome extends StatelessWidget {
@@ -36,13 +37,7 @@ class DepHome extends StatelessWidget {
                     const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 10.0),
                 child: Stack(
                   children: <Widget>[
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.black,
-                        child: Text('$index'),
-                      ),
-                    ),
+                    PostAvatar(index: index),
                     Align(
                       alignment: Alignment.center,
                       child: Container(
@@ -62,23 +57,12 @@ class DepHome extends StatelessWidget {
                                 'Hello I am philip from the Flutter team and I\'m very depressed',
                                 maxLines: 2,
                                 overflow: TextOverflow.fade,
-                                style: GoogleFonts.openSans(color: Colors.purple[200]),
+                                style: GoogleFonts.openSans(
+                                    color: Colors.purple[200]),
                               ),
                             ),
                             SizedBox(height: 50),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                FaIcon(FontAwesomeIcons.commentAlt,
-                                    color: Colors.purple),
-                                FaIcon(FontAwesomeIcons.handshake,
-                                    color: Colors.redAccent[400]),
-                                FaIcon(
-                                  FontAwesomeIcons.exclamationCircle,
-                                  color: Colors.amber[400],
-                                ),
-                              ],
-                            )
+                            PostReacts()
                           ],
                         ),
                       ),
