@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "743826211072",
+    "firebase_url": "https://volcano-1bb41.firebaseio.com",
+    "project_id": "volcano-1bb41",
+    "storage_bucket": "volcano-1bb41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743826211072:android:49afcd20cf7fc2257633e5",
+        "android_client_info": {
+          "package_name": "com.example.volcano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743826211072-03921k0p2juh10uc93bn251pc29kaoe6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_VTsPNJSwNjeUcl9Ga5VYoLjkTbXlWms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743826211072-03921k0p2juh10uc93bn251pc29kaoe6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "743826211072-bfgejbuadb4cldf61vd9ojtj7rspuh7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.volcano"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

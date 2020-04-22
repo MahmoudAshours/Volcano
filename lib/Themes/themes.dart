@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///Themes used in application.
+///Theme used in application.
 ThemeData themes = ThemeData(
   primaryColor: const Color(0xff303030),
   accentColor: const Color(0xff363A44),
