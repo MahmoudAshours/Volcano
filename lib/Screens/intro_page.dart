@@ -1,7 +1,7 @@
 import 'package:dot_pagination_swiper/dot_pagination_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:volcano/Screens/page_3d.dart';
+import 'package:volcano/Screens/home_page.dart';
 import 'package:volcano/Themes/themes.dart';
 
 class IntroPage extends StatefulWidget {
@@ -18,6 +18,7 @@ class _IntroPageState extends State<IntroPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: navGK,
+      theme: themes,
       home: Scaffold(
         floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
         floatingActionButton: FlatButton(
@@ -28,7 +29,7 @@ class _IntroPageState extends State<IntroPage> {
                 fontSize: 17,
               ),
             ),
-            onPressed: () => routePush(Page3D(), RouterType.fade)),
+            onPressed: () => routePush(HomePage(), RouterType.fade)),
         backgroundColor: themes.primaryColor,
         body: DotPaginationSwiper(
           onPageChanged: (int i) {

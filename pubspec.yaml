@@ -12,12 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_cube: ^0.0.5
-  spotlightnavbar: ^0.0.3
+  spotlightnavbar: ^0.0.5
   nav_router: ^0.0.5
   shared_preferences: ^0.5.6+3
   provider: ^4.0.5
   dot_pagination_swiper: ^0.1.1
   timeline_list: ^0.0.5
+  font_awesome_flutter: ^8.8.1
+  google_fonts: ^0.6.2
 
   cupertino_icons: ^0.1.3
 

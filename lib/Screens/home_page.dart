@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spotlightnavbar/spotlightnavbar.dart';
 import 'package:volcano/Screens/activities.dart';
 import 'package:volcano/Screens/articles.dart';
-import 'package:volcano/Screens/details.dart';
+import 'package:volcano/Screens/dep_home.dart'; 
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,9 +23,9 @@ class _HomePageState extends State<HomePage> {
         animationCurve: Curves.easeInOut,
         spotLightColor: const Color(0xffBB86FC),
         items: [
-          Icon(Icons.transform),
-          Icon(Icons.transform),
-          Icon(Icons.airline_seat_recline_extra)
+          FaIcon(FontAwesomeIcons.home),
+          FaIcon(FontAwesomeIcons.skyatlas),
+          FaIcon(FontAwesomeIcons.bookOpen),
         ],
         onItemPressed: (int i) => setState(() => currentItem = i),
         selectedItemColor: Colors.orangeAccent,

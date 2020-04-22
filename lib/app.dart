@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:volcano/Screens/page_3d.dart';
+import 'package:volcano/Screens/home_page.dart';
+import 'package:volcano/Themes/themes.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -8,8 +9,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: navGK,
+      theme: themes,
       title: 'Volcano',
-      home: Page3D(),
+      home: HomePage(),
     );
   }
 }

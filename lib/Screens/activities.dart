@@ -80,7 +80,7 @@ class Activities extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Icon(Icons.trip_origin),
-                              Icon(Icons.delete), 
+                              Icon(Icons.delete),
                             ],
                           )
                         ],

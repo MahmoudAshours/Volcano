@@ -19,11 +19,10 @@ class ActivitiesDetails extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              width: 300,
-              height: 300,
-              child: Text('Some photos for activity + comment'),
-              color: Colors.red,
-            ),
+                width: 300,
+                height: 300,
+                child: Text('Some photos for activity + comment'),
+                color: Colors.red),
           ),
           position: TimelineItemPosition.random,
           iconBackground: Colors.blue,
