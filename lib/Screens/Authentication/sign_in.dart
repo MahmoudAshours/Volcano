@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:volcano/Components/SignInComponents/email_component.dart';
+import 'package:volcano/Components/SignInComponents/new_user.dart';
 import 'package:volcano/Components/SignInComponents/password_component.dart';
 import 'package:volcano/Components/SignInComponents/signinbutton_component.dart';
 import 'package:volcano/Components/SignInComponents/welcome_text.dart';
@@ -13,7 +14,7 @@ class SignIn extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 40),
+              padding: const EdgeInsets.only(top: 40.0, left: 40.0),
               child: SafeArea(
                 child: Align(
                   alignment: Alignment.topLeft,
@@ -38,7 +39,8 @@ class SignIn extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Align(
                   alignment: Alignment.bottomRight, child: SignInButton()),
-            )
+            ),
+            NewUser()
           ],
         ),
       ),

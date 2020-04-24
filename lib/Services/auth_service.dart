@@ -14,17 +14,24 @@ class AuthService implements BaseAuth {
       FirebaseUser user = result.user;
       return user.uid;
     } catch (e) {
-      final _errHandler = LoginActions(errorMessages:e.message);
+      final _errHandler = ErrorActions(errorMessages: e.message);
       _errHandler.errorHandler(context);
       return null;
     }
   }
 
-  Future<String> signUp(String email, String password) async {
-    AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    FirebaseUser user = result.user;
-    return user.uid;
+  Future<String> signUp(
+      String email, String password, BuildContext context) async {
+    try {
+      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      return user.uid;
+    } catch (e) {
+      final _errHandler = ErrorActions(errorMessages: e.message);
+      _errHandler.errorHandler(context);
+      return null;
+    }
   }
 
   Future<FirebaseUser> getCurrentUser() async {

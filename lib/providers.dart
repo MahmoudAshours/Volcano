@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:volcano/Provider/AuthBloc/signin_bloc.dart';
+import 'package:volcano/Provider/AuthBloc/signup_bloc.dart';
 
 class Providers extends StatelessWidget {
   final MaterialApp child;
@@ -10,6 +11,7 @@ class Providers extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SignInBloc()),
+        ChangeNotifierProvider(create: (_) => SignUpBloc()),
       ],
       child: child,
     );
