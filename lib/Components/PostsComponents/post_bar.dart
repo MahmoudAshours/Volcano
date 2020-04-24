@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:volcano/Components/PostsComponents/post_modal.dart';
 
 class PostBar extends StatelessWidget {
   @override
@@ -10,8 +9,7 @@ class PostBar extends StatelessWidget {
     return SliverAppBar(
       pinned: true,
       title: GestureDetector(
-        onTap: () =>
-            showModalBottomSheet(context: context, builder: (_) => PostModal()),
+        onTap: () => () {},
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),

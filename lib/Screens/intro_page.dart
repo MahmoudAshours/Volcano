@@ -1,7 +1,7 @@
 import 'package:dot_pagination_swiper/dot_pagination_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:volcano/Screens/home_page.dart';
+import 'package:volcano/Screens/Authentication/sign_in.dart'; 
 import 'package:volcano/Themes/themes.dart';
 
 class IntroPage extends StatefulWidget {
@@ -29,18 +29,14 @@ class _IntroPageState extends State<IntroPage> {
                 fontSize: 17,
               ),
             ),
-            onPressed: () => routePush(HomePage(), RouterType.fade)),
+            onPressed: () => routePush(SignIn(), RouterType.fade)),
         backgroundColor: themes.primaryColor,
         body: DotPaginationSwiper(
           onPageChanged: (int i) {
             if (i == 1) {
-              setState(() {
-                done = true;
-              });
+              setState(() => done = true);
             } else {
-              setState(() {
-                done = false;
-              });
+              setState(() => done = false);
             }
           },
           children: <Widget>[firstIntro(), secondIntro()],

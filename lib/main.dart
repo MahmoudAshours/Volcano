@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:nav_router/nav_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:volcano/Screens/Authentication/sign_in.dart';
 import 'package:volcano/Screens/intro_page.dart';
-import 'package:volcano/app.dart';
+import 'package:volcano/providers.dart';
+import 'Themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    await checkIntro() ? IntroPage() : MyApp(),
+    Providers(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: navGK,
+        theme: themes,
+        title: 'Volcano',
+        home: await checkIntro() ? IntroPage() : SignIn(),
+      ),
+    ),
   );
 }
 

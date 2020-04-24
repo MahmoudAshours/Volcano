@@ -9,9 +9,16 @@ class PostReacts extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        FaIcon(FontAwesomeIcons.commentAlt, color: Colors.grey[400]),
-        FaIcon(FontAwesomeIcons.handshake, color: Colors.grey[400]),
-        FaIcon(FontAwesomeIcons.exclamationCircle, color: Colors.grey[400]),
+        IconButton(
+            onPressed: () => print('hi'),
+            icon: FaIcon(FontAwesomeIcons.commentAlt, color: Colors.grey[400])),
+        IconButton(
+            onPressed: () => print('hello'),
+            icon: FaIcon(FontAwesomeIcons.handshake, color: Colors.grey[400])),
+        IconButton(
+            onPressed: () => print('yosh'),
+            icon: FaIcon(FontAwesomeIcons.exclamationCircle,
+                color: Colors.grey[400])),
       ],
     );
   }

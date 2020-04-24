@@ -4,7 +4,7 @@ import 'package:nav_router/nav_router.dart';
 import 'package:volcano/Components/PostsComponents/post_avatar.dart';
 import 'package:volcano/Components/PostsComponents/post_bar.dart';
 import 'package:volcano/Components/PostsComponents/post_reacts.dart';
-import 'package:volcano/Screens/custom_page.dart';
+import 'package:volcano/Screens/post_details.dart';
 
 class DepHome extends StatelessWidget {
   @override
@@ -31,7 +31,7 @@ class DepHome extends StatelessWidget {
             itemBuilder:
                 (BuildContext context, int index, Animation animation) =>
                     GestureDetector(
-              onTap: () => routePush(CustomPage(), RouterType.fade),
+              onTap: () => routePush(PostDetails(), RouterType.fade),
               child: Padding(
                 padding:
                     const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 10.0),
@@ -54,12 +54,11 @@ class DepHome extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 10.0),
                               child: Text(
-                                'Hello I am philip from the Flutter team and I\'m very depressed',
-                                maxLines: 2,
-                                overflow: TextOverflow.fade,
-                                style: GoogleFonts.openSans(
-                                    color: Colors.purple[200]),
-                              ),
+                                  'Hello I am philip from the Flutter team and I\'m very depressed',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.fade,
+                                  style: GoogleFonts.openSans(
+                                      color: Colors.purple[200])),
                             ),
                             SizedBox(height: 50),
                             PostReacts()

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 import 'package:nav_router/nav_router.dart';
 
-class CustomPage extends StatelessWidget {
+class PostDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
