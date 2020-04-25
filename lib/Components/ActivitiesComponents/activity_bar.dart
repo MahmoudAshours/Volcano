@@ -6,6 +6,7 @@ class ActivityBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       centerTitle: true,
+      automaticallyImplyLeading: false, // Don't show the leading button
       pinned: true,
       title: Center(
         child: Padding(

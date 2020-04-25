@@ -8,6 +8,7 @@ class PostBar extends StatelessWidget {
     final _screenHeight = MediaQuery.of(context).size.height;
     return SliverAppBar(
       pinned: true,
+      automaticallyImplyLeading: false, // Don't show the leading button
       title: GestureDetector(
         onTap: () => () {},
         child: Center(

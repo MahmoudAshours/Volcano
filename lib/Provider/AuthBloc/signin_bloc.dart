@@ -16,10 +16,12 @@ class SignInBloc with ChangeNotifier {
   void signIn(BuildContext context) {
     _authService.signIn('$email', '$password', context).then(
       (String uid) {
-        _userUID = uid;
-        _authStatus = AuthStatus.LOGGED_IN;
-        routePush(HomePage(), RouterType.fade);
-        notifyListeners();
+        if (uid != null) {
+          _userUID = uid;
+          _authStatus = AuthStatus.LOGGED_IN;
+          routePush(HomePage(), RouterType.fade);
+          notifyListeners();
+        }
       },
     );
   }

@@ -4,6 +4,7 @@ class Validators {
 
   final _passwordRegex = RegExp(
       "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+  
   bool validateEmailMessage(String email) {
     if (_emailRegExp.hasMatch(email)) {
       return true;

@@ -23,7 +23,7 @@ class DepHome extends StatelessWidget {
                 style: GoogleFonts.openSans(color: Colors.purple[200]),
               ),
             ),
-            leading: SizedBox.shrink(),
+            automaticallyImplyLeading: false, // Don't show the leading button
           ),
           PostBar(),
           SliverAnimatedList(

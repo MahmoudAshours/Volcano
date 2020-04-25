@@ -10,6 +10,7 @@ class Articles extends StatelessWidget {
           snap: true,
           floating: true,
           centerTitle: true,
+          automaticallyImplyLeading: false, // Don't show the leading button
           stretch: true,
           forceElevated: true,
           title: Padding(
@@ -21,7 +22,6 @@ class Articles extends StatelessWidget {
               ),
             ),
           ),
-          leading: SizedBox.shrink(),
           backgroundColor: const Color(0xff303030),
         ),
         SliverGrid.count(

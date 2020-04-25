@@ -21,7 +21,7 @@ class Activities extends StatelessWidget {
               ),
             ),
           ),
-          leading: SizedBox.shrink(),
+          automaticallyImplyLeading: false, // Don't show the leading button
         ),
         ActivityBar(),
         SliverAnimatedList(
