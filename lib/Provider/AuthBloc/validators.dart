@@ -4,7 +4,7 @@ class Validators {
 
   final _passwordRegex = RegExp(
       "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
-  
+
   bool validateEmailMessage(String email) {
     if (_emailRegExp.hasMatch(email)) {
       return true;
@@ -14,6 +14,13 @@ class Validators {
 
   bool validatePasswordMessage(String password) {
     if (_passwordRegex.hasMatch(password)) {
+      return true;
+    }
+    return false;
+  }
+
+  bool validatePost(String post) {
+    if (post.trim().isNotEmpty) {
       return true;
     }
     return false;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nav_router/nav_router.dart';
+import 'package:volcano/Components/PostsComponents/post_screen.dart';
 
 class PostBar extends StatelessWidget {
   @override
@@ -10,7 +12,7 @@ class PostBar extends StatelessWidget {
       pinned: true,
       automaticallyImplyLeading: false, // Don't show the leading button
       title: GestureDetector(
-        onTap: () => () {},
+        onTap: () => routePush(PostScreen(), RouterType.fade),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),

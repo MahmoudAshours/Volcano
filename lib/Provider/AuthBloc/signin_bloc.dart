@@ -18,6 +18,7 @@ class SignInBloc with ChangeNotifier {
       (String uid) {
         if (uid != null) {
           _userUID = uid;
+          notifyListeners();
           _authStatus = AuthStatus.LOGGED_IN;
           routePush(HomePage(), RouterType.fade);
           notifyListeners();
