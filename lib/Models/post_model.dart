@@ -8,14 +8,12 @@ class PostsModel {
   int handshakes;
   int reports;
   PostsModel({@required this.title, @required this.description});
-  Map<String, dynamic> toJSON(uid) {
-    return {
-      'title': title,
-      'description': description,
-      'time': DateTime.now(),
-      'handshakes': 0,
-      'reports': 0,
-      'userID': uid
-    };
-  }
+  Map<String, dynamic> toJSON(uid) => {
+        'title': title,
+        'description': description,
+        'time': DateTime.now(),
+        'handshakes': 0,
+        'reports': 0,
+        'userID': uid
+      };
 }

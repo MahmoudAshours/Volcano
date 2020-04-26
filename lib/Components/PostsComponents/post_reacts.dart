@@ -9,6 +9,7 @@ class PostReacts extends StatelessWidget {
   PostReacts({this.index, this.snapshot});
   @override
   Widget build(BuildContext context) {
+    //TODO : Refactoring
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[

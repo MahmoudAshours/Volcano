@@ -7,6 +7,7 @@ import 'package:volcano/Provider/AuthBloc/validators.dart';
 
 class PostsBloc with ChangeNotifier {
   final _validator = Validators();
+
   String _uid;
   String title;
   String description;

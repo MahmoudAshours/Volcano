@@ -8,6 +8,8 @@ import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
 import 'package:volcano/Screens/post_details.dart';
 
 class AllPosts extends StatelessWidget {
+  //TODO : Refactoring
+
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<PostsBloc>(context);

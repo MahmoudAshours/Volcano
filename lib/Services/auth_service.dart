@@ -52,4 +52,8 @@ class AuthService implements BaseAuth {
     FirebaseUser user = await _firebaseAuth.currentUser();
     return user.isEmailVerified;
   }
+
+  Stream checkIfLoggedIn() {
+    return FirebaseAuth.instance.onAuthStateChanged;
+  }
 }

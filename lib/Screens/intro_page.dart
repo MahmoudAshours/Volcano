@@ -1,6 +1,7 @@
 import 'package:dot_pagination_swiper/dot_pagination_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:volcano/Screens/Authentication/sign_in.dart';
 import 'package:volcano/Themes/themes.dart';
 
@@ -25,7 +26,10 @@ class _IntroPageState extends State<IntroPage> {
               fontSize: 17,
             ),
           ),
-          onPressed: () => routePush(SignIn(), RouterType.fade)),
+          onPressed: () {
+            checkIntro();
+            routePush(SignIn(), RouterType.fade);
+          }),
       backgroundColor: themes.primaryColor,
       body: DotPaginationSwiper(
         onPageChanged: (int i) {
@@ -158,6 +162,11 @@ class _IntroPageState extends State<IntroPage> {
         ],
       ),
     );
+  }
+
+  Future<bool> checkIntro() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setBool('intro', false);
   }
 }
 

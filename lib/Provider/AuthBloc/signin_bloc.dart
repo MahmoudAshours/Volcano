@@ -7,10 +7,8 @@ class SignInBloc with ChangeNotifier {
   String email;
   String password;
   final _authService = AuthService();
-  var _authStatus = AuthStatus.NOT_DETERMINED;
   var _userUID;
 
-  AuthStatus get authStatus => _authStatus;
   get userUID => _userUID;
 
   void signIn(BuildContext context) {
@@ -19,17 +17,15 @@ class SignInBloc with ChangeNotifier {
         if (uid != null) {
           _userUID = uid;
           notifyListeners();
-          _authStatus = AuthStatus.LOGGED_IN;
           routePush(HomePage(), RouterType.fade);
           notifyListeners();
         }
       },
     );
   }
-}
 
-enum AuthStatus {
-  NOT_DETERMINED,
-  NOT_LOGGED_IN,
-  LOGGED_IN,
+  void signOut(BuildContext context) =>
+      _authService.signOut().then((value) => Navigator.of(context).pop());
+
+  Stream checkAuth() => _authService.checkIfLoggedIn();
 }

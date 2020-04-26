@@ -44,10 +44,4 @@ class _AnimatedTextFeildState extends State<AnimatedTextFeild> {
       ),
     );
   }
-
-  @override
-  void dispose() {
-    setState(() => show = false);
-    super.dispose();
-  }
 }
