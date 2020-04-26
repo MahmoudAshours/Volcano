@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
+import 'package:volcano/Components/PostsComponents/handshake.dart';
 
 class PostReacts extends StatelessWidget {
   final int index;
@@ -9,26 +8,10 @@ class PostReacts extends StatelessWidget {
   PostReacts({this.index, this.snapshot});
   @override
   Widget build(BuildContext context) {
-    //TODO : Refactoring
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Consumer<PostsBloc>(
-          builder: (_, _bloc, __) => Column(
-            children: <Widget>[
-              IconButton(
-                  onPressed: () => _bloc
-                      .addHandShake(snapshot.data.documents[index].reference),
-                  icon: FaIcon(FontAwesomeIcons.handshake,
-                      color: Colors.grey[400])),
-              Text(
-                '${snapshot.data.documents[index]['handshakes']}',
-                style: TextStyle(
-                    color: Colors.purple[100], fontWeight: FontWeight.w800),
-              )
-            ],
-          ),
-        ),
+        HandShake(index: index, snapshot: snapshot),
         IconButton(
             onPressed: () => print('yosh'),
             icon: FaIcon(FontAwesomeIcons.exclamationCircle,

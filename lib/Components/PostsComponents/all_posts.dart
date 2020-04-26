@@ -6,26 +6,31 @@ import 'package:volcano/Components/PostsComponents/post_avatar.dart';
 import 'package:volcano/Components/PostsComponents/post_reacts.dart';
 import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
 import 'package:volcano/Screens/post_details.dart';
+import 'package:volcano/Utils/spiner.dart';
 
-class AllPosts extends StatelessWidget {
-  //TODO : Refactoring
-
+class AllPosts extends StatelessWidget { 
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<PostsBloc>(context);
     return StreamBuilder(
       stream: _bloc.allPosts,
       builder: (BuildContext context, AsyncSnapshot snapshot) => !snapshot
-              .hasData
+                  .hasData &&
+              snapshot.connectionState == ConnectionState.waiting
           ? SliverToBoxAdapter(
-              child: SizedBox(child: CircularProgressIndicator()),
+              child: Center(
+                child: SizedBox(
+                  child: Spinner(),
+                ),
+              ),
             )
           : SliverList(
               delegate: SliverChildBuilderDelegate(
-                (context, index) => GestureDetector(
+                (BuildContext context, int index) => GestureDetector(
                   onTap: () => routePush(
-                      PostDetails(snapshot: snapshot, index: index),
-                      RouterType.fade),
+                    PostDetails(snapshot: snapshot, index: index),
+                    RouterType.fade,
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.only(
                       top: 20.0,

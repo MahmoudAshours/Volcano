@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
+import 'package:volcano/Components/PostsComponents/addcomment_button.dart';
+import 'package:volcano/Components/PostsComponents/comment_field.dart';
 
 class CommentModal extends StatefulWidget {
   final String postID;
@@ -18,7 +17,6 @@ class _CommentModalState extends State<CommentModal> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO : Refactoring
     return SizedBox.expand(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,24 +31,9 @@ class _CommentModalState extends State<CommentModal> {
               ),
             ),
           ),
-          Consumer<PostsBloc>(
-            builder: (_, _bloc, __) => TextField(
-              minLines: 10,
-              maxLines: 100,
-              onChanged: (String comment) => _bloc.comment = comment,
-              decoration: InputDecoration(border: OutlineInputBorder()),
-            ),
-          ),
+          CommentField(),
           SizedBox(height: 20),
-          Consumer<PostsBloc>(
-            builder: (_, _bloc, __) => FloatingActionButton(
-              onPressed: () => _bloc.addComment(context, widget.postID),
-              child: FaIcon(
-                FontAwesomeIcons.check,
-                color: Colors.amber[100],
-              ),
-            ),
-          )
+          AddComment(postID: widget.postID)
         ],
       ),
     );
