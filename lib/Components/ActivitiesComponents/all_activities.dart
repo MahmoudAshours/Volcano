@@ -13,7 +13,8 @@ class AllActivities extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) => !snapshot
               .hasData
           ? SliverToBoxAdapter(
-              child: SizedBox(child: CircularProgressIndicator()),
+              child:
+                  SizedBox(child: Center(child: CircularProgressIndicator())),
             )
           : SliverAnimatedList(
               initialItemCount: snapshot.data.documents.length,

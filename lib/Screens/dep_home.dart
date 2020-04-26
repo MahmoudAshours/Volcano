@@ -9,38 +9,35 @@ import 'package:volcano/Provider/AuthBloc/signin_bloc.dart';
 class DepHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => true,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            elevation: 3,
-            forceElevated: true,
-            centerTitle: true,
-            actions: <Widget>[
-              Consumer<SignInBloc>(
-                builder: (_, _bloc, __) => IconButton(
-                  icon: FaIcon(
-                    FontAwesomeIcons.signOutAlt,
-                    color: Colors.red,
-                  ),
-                  onPressed: () => _bloc.signOut(context),
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverAppBar(
+          elevation: 3,
+          forceElevated: true,
+          centerTitle: true,
+          actions: <Widget>[
+            Consumer<SignInBloc>(
+              builder: (_, _bloc, __) => IconButton(
+                icon: FaIcon(
+                  FontAwesomeIcons.signOutAlt,
+                  color: Colors.red,
                 ),
-              )
-            ],
-            title: Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Text(
-                'Home',
-                style: GoogleFonts.openSans(color: Colors.purple[200]),
+                onPressed: () => _bloc.signOut(context),
               ),
+            )
+          ],
+          title: Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Text(
+              'Home',
+              style: GoogleFonts.openSans(color: Colors.purple[200]),
             ),
-            automaticallyImplyLeading: false, // Don't show the leading button
           ),
-          PostBar(),
-          AllPosts()
-        ],
-      ),
+          automaticallyImplyLeading: false, // Don't show the leading button
+        ),
+        PostBar(),
+        AllPosts()
+      ],
     );
   }
 }

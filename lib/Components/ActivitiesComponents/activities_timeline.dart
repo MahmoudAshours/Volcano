@@ -40,7 +40,6 @@ class ActivitiesTimeLine extends StatelessWidget {
                     borderRadius: 10,
                     elevation: 3,
                     shape: BadgeShape.circle,
-
                     animationDuration: Duration(seconds: 1),
                     badgeContent: Column(
                       children: <Widget>[
@@ -48,7 +47,7 @@ class ActivitiesTimeLine extends StatelessWidget {
                           FontAwesomeIcons.handshake,
                           color: Colors.amber[100],
                         ),
-                        Text('40')
+                        Text('${snapshot.data.documents[i]['handshakes']}')
                       ],
                     ),
                     child: Container(

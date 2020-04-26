@@ -16,7 +16,7 @@ class ActivityBloc with ChangeNotifier {
 
   set userUID(uid) {
     _userUID = uid;
-    print(uid);
+    print('$uid is in activity bloc');
     notifyListeners();
   }
 
@@ -74,5 +74,17 @@ class ActivityBloc with ChangeNotifier {
         .collection('activities')
         .orderBy('time', descending: true)
         .snapshots();
+  }
+
+  Future addHandShake(postRef) async {
+    await Firestore.instance.runTransaction(
+      (transactionHandler) async {
+        DocumentSnapshot freshSnap = await transactionHandler.get(postRef);
+        await transactionHandler.update(
+          freshSnap.reference,
+          {'handshakes': freshSnap['handshakes'] + 1},
+        );
+      },
+    );
   }
 }

@@ -23,8 +23,7 @@ class Providers extends StatelessWidget {
             } else if (signUp.userUID == null) {
               return posts..uid = signIn.userUID;
             } else {
-              var x = s().then((value) => value);
-              return posts..uid = x;
+              return posts..uid = signIn.userUID;
             }
           },
         ),
@@ -32,24 +31,17 @@ class Providers extends StatelessWidget {
           create: (_) => ActivityBloc(),
           //TODO
           update: (_, signUp, signIn, activity) {
-            if (signIn.userUID == null)
+            if (signIn.userUID == null) {
               return activity..userUID = signUp.userUID;
-            if (signUp.userUID == null)
+            } else if (signUp.userUID == null) {
               return activity..userUID = signIn.userUID;
-            return activity
-              ..userUID = FirebaseAuth.instance.onAuthStateChanged.first
-                  .then((value) => value.uid);
+            } else {
+              return activity..userUID = signIn.userUID;
+            }
           },
         ),
       ],
       child: child,
     );
-  }
-
-  Future<String> s() async {
-    print(s);
-    return await FirebaseAuth.instance.onAuthStateChanged.first
-        .then((value) => value.uid);
-
   }
 }

@@ -9,6 +9,10 @@ class SignInBloc with ChangeNotifier {
   final _authService = AuthService();
   var _userUID;
 
+  set userUID(uid) {
+    _userUID = uid; 
+  }
+
   get userUID => _userUID;
 
   void signIn(BuildContext context) {
@@ -24,8 +28,7 @@ class SignInBloc with ChangeNotifier {
     );
   }
 
-  void signOut(BuildContext context) =>
-      _authService.signOut().then((value) => Navigator.of(context).pop());
+  void signOut(BuildContext context) => _authService.signOut();
 
   Stream checkAuth() => _authService.checkIfLoggedIn();
 }

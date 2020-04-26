@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:volcano/Components/ActivitiesComponents/handshakes_add.dart';
 
 class ActivitiesDetails extends StatelessWidget {
   final AsyncSnapshot snapshot;
@@ -35,6 +35,12 @@ class ActivitiesDetails extends StatelessWidget {
                   child:
                       Text('${snapshot.data.documents[index]['description']}'),
                 ),
+                SafeArea(
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: HandShakesAdd(snapshot: snapshot, index: index),
+                  ),
+                )
               ],
             ),
           ),
@@ -51,7 +57,12 @@ class ActivitiesDetails extends StatelessWidget {
     } else if (_timeAgo.inSeconds > 60 && _timeAgo.inMinutes < 60) {
       return "${_timeAgo.inMinutes} minutes ago";
     } else {
-      return "${_timeAgo.inHours == 1 ? '1 hour ago' : '_timeAgo.inHours  hours ago'}";
+      var time = _timeAgo.inHours;
+      if (time == 1) {
+        return '${_timeAgo.inHours} hour ago';
+      } else {
+        return '${_timeAgo.inHours} hours ago';
+      }
     }
   }
 }

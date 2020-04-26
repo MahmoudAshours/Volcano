@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +23,17 @@ void main() async {
             ? IntroPage()
             : Consumer<SignInBloc>(
                 builder: (_, bloc, __) {
-                  return StreamBuilder(
+                  return StreamBuilder<FirebaseUser>(
                     stream: bloc.checkAuth(),
-                    builder: (_, snapshot) {
-                      print(snapshot.hasData);
-                      return snapshot.hasData ? HomePage() : SignIn();
+                    builder: (_, AsyncSnapshot<FirebaseUser> snapshot) {
+                      if (snapshot.hasData && snapshot.data != null) {
+                        return HomePage(bloc: bloc, uid: snapshot.data.uid);
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      } else {
+                        return SignIn();
+                      }
                     },
                   );
                 },

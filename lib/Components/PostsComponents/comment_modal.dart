@@ -19,8 +19,21 @@ class _CommentModalState extends State<CommentModal> {
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SafeArea(
+            minimum: EdgeInsets.only(top:10),
+                      child: Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: 50,
+                height: 10,
+                decoration: BoxDecoration(
+                  color: Colors.white30,
+                  borderRadius:BorderRadius.circular(30)
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(

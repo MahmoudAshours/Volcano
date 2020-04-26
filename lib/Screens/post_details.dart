@@ -6,6 +6,7 @@ import 'package:timeline_list/timeline.dart';
 import 'package:timeline_list/timeline_model.dart';
 import 'package:volcano/Components/PostsComponents/comment_modal.dart';
 import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
+import 'package:volcano/Utils/spiner.dart';
 
 class PostDetails extends StatelessWidget {
   final int index;
@@ -79,7 +80,10 @@ class PostDetails extends StatelessWidget {
                       stream: _bloc.getAllComments(
                           snapshot.data.documents[index].documentID),
                       builder: (_, snapshot) => !snapshot.hasData
-                          ? CircularProgressIndicator()
+                          ? Spinner(
+                              firstColor: Colors.purple[100],
+                              secondColor: Colors.amber[100],
+                            )
                           : Container(
                               width: MediaQuery.of(context).size.width,
                               height: MediaQuery.of(context).size.height,

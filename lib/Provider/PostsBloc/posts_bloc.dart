@@ -15,6 +15,7 @@ class PostsBloc with ChangeNotifier {
 
   set uid(uid) {
     _uid = uid;
+    print('$uid is in posts bloc');
     notifyListeners();
   }
 
