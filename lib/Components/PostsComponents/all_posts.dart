@@ -20,54 +20,57 @@ class AllPosts extends StatelessWidget {
             )
           : SliverList(
               delegate: SliverChildBuilderDelegate(
-                  (context, index) => GestureDetector(
-                        onTap: () => routePush(PostDetails(), RouterType.fade),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 10.0),
-                          child: Stack(
-                            children: <Widget>[
-                              PostAvatar(
-                                index: index,
-                                uid: snapshot.data.documents[index]['userID'],
-                              ),
-                              Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 1.5,
-                                  height: 165.25,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10.0),
-                                        child: Text(
-                                          '${snapshot.data.documents[index]['title']}',
-                                          maxLines: 2,
-                                          overflow: TextOverflow.fade,
-                                          style: GoogleFonts.openSans(
-                                              color: Colors.purple[200]),
-                                        ),
-                                      ),
-                                      SizedBox(height: 50),
-                                      PostReacts()
-                                    ],
+                (context, index) => GestureDetector(
+                  onTap: () => routePush(
+                      PostDetails(snapshot: snapshot, index: index),
+                      RouterType.fade),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20.0,
+                      bottom: 20.0,
+                      left: 10.0,
+                    ),
+                    child: Stack(
+                      children: <Widget>[
+                        PostAvatar(
+                          index: index,
+                          uid: snapshot.data.documents[index]['userID'],
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 1.5,
+                            height: 165.25,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Text(
+                                    '${snapshot.data.documents[index]['title']}',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.fade,
+                                    style: GoogleFonts.openSans(
+                                        color: Colors.purple[200]),
                                   ),
                                 ),
-                              ),
-                            ],
+                                SizedBox(height: 50),
+                                PostReacts(snapshot: snapshot, index: index)
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                  childCount: snapshot.data.documents.length),
+                      ],
+                    ),
+                  ),
+                ),
+                childCount: snapshot.data.documents.length,
+              ),
             ),
     );
   }

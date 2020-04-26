@@ -1,36 +1,126 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cube/flutter_cube.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nav_router/nav_router.dart';
+import 'package:provider/provider.dart';
+import 'package:timeline_list/timeline.dart';
+import 'package:timeline_list/timeline_model.dart';
+import 'package:volcano/Components/PostsComponents/comment_modal.dart';
+import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
 
 class PostDetails extends StatelessWidget {
+  final int index;
+  final AsyncSnapshot snapshot;
+  PostDetails({@required this.index, @required this.snapshot});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff121212),
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.only(top: 16.0),
           child: Text('Detailed info'),
         ),
-        backgroundColor: const Color(0xff121212),
         leading: GestureDetector(
           onTap: () => pop(),
           child: Icon(Icons.arrow_back_ios, color: Colors.purple[300]),
         ),
       ),
-      body: Center(
-        child: Container(
-          width: 50,
-          height: 200,
-          child: Cube(
-            onSceneCreated: (Scene scene) {
-              var _cube = Object(
-                scale: Vector3(2.0, 2.0, 2.0),
-                backfaceCulling: false,
-                fileName: 'assets/brain/brain.obj',
-              );
-              scene.world.add(_cube);
-            },
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: SelectableText(
+                    "${snapshot.data.documents[index]['title']}",
+                    style: TextStyle(
+                      fontSize: 42,
+                      color: Colors.purple[100],
+                    ),
+                  ),
+                ),
+              ),
+              Divider(thickness: 6),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: SelectableText(
+                    "${snapshot.data.documents[index]['description']}",
+                    cursorColor: Colors.purple[100],
+                    showCursor: true,
+                    toolbarOptions: ToolbarOptions(selectAll: true, copy: true),
+                    textScaleFactor: 1.2,
+                    style: TextStyle(
+                      fontSize: 24,
+                      wordSpacing: 1.3,
+                      letterSpacing: 1,
+                      height: 1.2,
+                    ),
+                  ),
+                ),
+              ),
+              Divider(thickness: 3),
+              Column(
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () => showModalBottomSheet(
+                        context: context,
+                        builder: (_) => CommentModal(
+                            postID: snapshot.data.documents[index].documentID)),
+                    icon: FaIcon(FontAwesomeIcons.commentAlt,
+                        color: Colors.purple[400]),
+                  ),
+                  Text('Comment'),
+                  SizedBox(height: 30),
+                  Consumer<PostsBloc>(
+                    builder: (_, _bloc, __) => StreamBuilder(
+                      stream: _bloc.getAllComments(
+                          snapshot.data.documents[index].documentID),
+                      builder: (_, snapshot) => !snapshot.hasData
+                          ? CircularProgressIndicator()
+                          : Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
+                              child: Timeline.builder(
+                                itemCount: snapshot.data.documents.length,
+                                lineColor: Colors.amber[100],
+                                iconSize: 29,
+                                position: TimelinePosition.Left,
+                                itemBuilder: (_, int index) => TimelineModel(
+                                  GestureDetector(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(18.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white12,
+                                            ),
+                                            child: Text(
+                                                '${snapshot.data.documents[index]['comment']}'),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  iconBackground: Colors.transparent,
+                                  icon: Icon(
+                                    Icons.comment,
+                                    color: Colors.purple[100],
+                                  ),
+                                ),
+                              ),
+                            ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

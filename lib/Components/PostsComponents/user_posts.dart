@@ -16,7 +16,7 @@ class UserPosts extends StatelessWidget {
         centerTitle: true,
       ),
       body: StreamBuilder(
-        stream: _bloc.userPosts,
+        stream: _bloc.getUserPosts(userID: uid),
         builder: (_, AsyncSnapshot snapshot) => !snapshot.hasData
             ? CircularProgressIndicator()
             : Center(

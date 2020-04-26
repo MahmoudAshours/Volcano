@@ -8,7 +8,7 @@ class PostButton extends StatelessWidget {
     return Consumer<PostsBloc>(
       builder: (_, _bloc, __) => SafeArea(
         child: FloatingActionButton(
-          onPressed: () => _bloc.addUsersPosts(),
+          onPressed: () => _bloc.addUsersPosts(context),
           child: Text('Post!'),
         ),
       ),

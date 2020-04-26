@@ -13,10 +13,13 @@ class Providers extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SignInBloc()),
         ChangeNotifierProvider(create: (_) => SignUpBloc()),
-        Provider(create: (_) => PostsBloc()),
-        ChangeNotifierProxyProvider<SignInBloc, PostsBloc>(
+        ChangeNotifierProxyProvider2<SignUpBloc, SignInBloc, PostsBloc>(
           create: (_) => PostsBloc(),
-          update: (_, signIn, posts) => posts..uid = signIn.userUID,
+          update: (_, signUp, signIn, posts) {
+            if (signIn.userUID == null) return posts..uid = signUp.userUID;
+            if (signUp.userUID == null) return posts..uid = signIn.userUID;
+            return null;
+          },
         ),
       ],
       child: child,
