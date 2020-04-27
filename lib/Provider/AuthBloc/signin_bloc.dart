@@ -13,7 +13,7 @@ class SignInBloc with ChangeNotifier {
     _userUID = uid; 
   }
 
-  get userUID => _userUID;
+  get getUserUID => _userUID;
 
   void signIn(BuildContext context) {
     _authService.signIn('$email', '$password', context).then(
