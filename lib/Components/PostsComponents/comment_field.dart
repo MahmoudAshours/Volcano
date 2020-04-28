@@ -10,7 +10,9 @@ class CommentField extends StatelessWidget {
         minLines: 10,
         maxLines: 100,
         onChanged: (String comment) => _bloc.comment = comment,
-        decoration: InputDecoration(border: OutlineInputBorder()),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+        ),
       ),
     );
   }

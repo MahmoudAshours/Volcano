@@ -18,6 +18,7 @@ class AllActivities extends StatelessWidget {
             )
           : SliverAnimatedList(
               initialItemCount: snapshot.data.documents.length,
+              
               itemBuilder:
                   (BuildContext context, int index, Animation animation) =>
                       GestureDetector(

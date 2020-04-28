@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
       List.unmodifiable([DepHome(), Activities(), Articles()]);
   @override
   void initState() {
-    widget.bloc..userUID = widget.uid;
+    if (widget.uid != null) widget.bloc..userUID = widget.uid;
     super.initState();
   }
 

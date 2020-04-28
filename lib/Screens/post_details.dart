@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nav_router/nav_router.dart';
 import 'package:provider/provider.dart';
 import 'package:timeline_list/timeline.dart';
@@ -35,9 +36,11 @@ class PostDetails extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: SelectableText(
                     "${snapshot.data.documents[index]['title']}",
-                    style: TextStyle(
-                      fontSize: 42,
+                    style: GoogleFonts.openSans(
                       color: Colors.purple[100],
+                      fontWeight: FontWeight.w200,
+                      fontSize: 40,
+                      letterSpacing: 1.3,
                     ),
                   ),
                 ),
@@ -52,12 +55,11 @@ class PostDetails extends StatelessWidget {
                     cursorColor: Colors.purple[100],
                     showCursor: true,
                     toolbarOptions: ToolbarOptions(selectAll: true, copy: true),
-                    textScaleFactor: 1.2,
-                    style: TextStyle(
-                      fontSize: 24,
-                      wordSpacing: 1.3,
-                      letterSpacing: 1,
-                      height: 1.2,
+                    style: GoogleFonts.openSans(
+                      color: Colors.white70,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 22,
+                      letterSpacing: 1.3,
                     ),
                   ),
                 ),
@@ -106,7 +108,14 @@ class PostDetails extends StatelessWidget {
                                               color: Colors.white12,
                                             ),
                                             child: Text(
-                                                '${snapshot.data.documents[index]['comment']}'),
+                                              '${snapshot.data.documents[index]['comment']}',
+                                              style: GoogleFonts.openSans(
+                                                color: Colors.amber[100],
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 19,
+                                                letterSpacing: 1.3,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),

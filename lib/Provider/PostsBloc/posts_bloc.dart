@@ -15,7 +15,6 @@ class PostsBloc with ChangeNotifier {
 
   set uid(uid) {
     _uid = uid;
-    print('$uid is in posts bloc');
     notifyListeners();
   }
 
@@ -59,7 +58,6 @@ class PostsBloc with ChangeNotifier {
   }
 
   Stream<QuerySnapshot> getUserPosts({userID}) {
-    print(userID);
     return Firestore.instance
         .collectionGroup('posts')
         .where('userID', isEqualTo: userID ?? '$_uid')

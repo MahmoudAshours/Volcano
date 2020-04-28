@@ -8,6 +8,7 @@ import 'package:volcano/Screens/Authentication/sign_in.dart';
 import 'package:volcano/Screens/home_page.dart';
 import 'package:volcano/Screens/intro_page.dart';
 import 'package:volcano/providers.dart';
+import 'package:volcano/splash.dart';
 import 'Themes/themes.dart';
 
 void main() async {
@@ -32,7 +33,7 @@ void main() async {
                           ConnectionState.waiting) {
                         return CircularProgressIndicator();
                       } else {
-                        return SignIn();
+                        return Splash(child: SignIn());
                       }
                     },
                   );

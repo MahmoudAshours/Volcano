@@ -19,8 +19,16 @@ class ActivityBar extends StatelessWidget {
               width: 300,
               height: 50,
               child: Center(
-                  child: Text("Share your activity!",
-                      style: GoogleFonts.openSans(color: Colors.purple[200]))),
+                child: Text(
+                  "Share your activity!",
+                  style: GoogleFonts.openSans(
+                    color: Colors.purple[200],
+                    fontWeight: FontWeight.w700,
+                    fontSize: 23,
+                    letterSpacing: 1.3,
+                  ),
+                ),
+              ),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(

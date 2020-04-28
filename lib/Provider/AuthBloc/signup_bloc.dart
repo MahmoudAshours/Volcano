@@ -35,9 +35,11 @@ class SignUpBloc with ChangeNotifier {
       notifyListeners();
       _authService.signUp('$email', '$password', context).then(
         (String uid) {
-          _userUID = uid;
-          notifyListeners();
-          routePush(HomePage(), RouterType.fade);
+          if (uid != null) {
+            _userUID = uid;
+            notifyListeners();
+            routePush(HomePage(), RouterType.fade);
+          }
         },
       );
     }

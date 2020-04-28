@@ -10,6 +10,7 @@ class DepHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      cacheExtent: 8,
       slivers: <Widget>[
         SliverAppBar(
           elevation: 3,

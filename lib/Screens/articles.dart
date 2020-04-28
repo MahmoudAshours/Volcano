@@ -6,6 +6,7 @@ class Articles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        cacheExtent: 8,
         slivers: <Widget>[
           SliverAppBar(
             elevation: 3,

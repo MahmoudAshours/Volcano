@@ -4,23 +4,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:volcano/Models/activity_model.dart';
+import 'package:volcano/Provider/AuthBloc/validators.dart';
 
 class ActivityBloc with ChangeNotifier {
   var _userUID;
   String _imageFromNetwork;
   String description;
   File _imagePath;
+  final _validation = Validators();
+  var imageUploaded = UploadImage.notUploading;
 
   set userUID(uid) {
     _userUID = uid;
-    print('$uid is in activity bloc');
     notifyListeners();
   }
 
-  Future<void> uploadNewPic() async {
+  Future<bool> uploadNewPic() async {
     try {
       String trimmedPath = basename(_imagePath.path);
       StorageReference _firebaseStorage =
@@ -28,8 +31,9 @@ class ActivityBloc with ChangeNotifier {
       StorageUploadTask _uploadTask = _firebaseStorage.putFile(_imagePath);
       StorageTaskSnapshot _storageSnapshot = await _uploadTask.onComplete;
       _imageFromNetwork = await _storageSnapshot.ref.getDownloadURL();
+      return true;
     } catch (e) {
-      print(e);
+      return false;
     }
   }
 
@@ -44,29 +48,57 @@ class ActivityBloc with ChangeNotifier {
     }
   }
 
-  Future<void> writeDataFireStore(context) {
-    final _activityModel = ActivityModel(
-      image: _imageFromNetwork,
-      userUID: _userUID,
-      shortDescription: description,
-      time: DateTime.now(),
-    );
-    return Firestore.instance
-        .collection('activities')
-        .document()
-        .setData(_activityModel.toJSON())
-        .then(
-          (value) => {
-            _imageFromNetwork = null,
-            description = null,
-            Navigator.of(context).pop()
-          },
-        );
+  Future<void> writeDataFireStore(BuildContext context) {
+    if (_validation.validatePost(description) && _imageFromNetwork != null) {
+      final _activityModel = ActivityModel(
+        image: _imageFromNetwork,
+        userUID: _userUID,
+        shortDescription: description,
+        time: DateTime.now(),
+      );
+      return Firestore.instance
+          .collection('activities')
+          .document()
+          .setData(_activityModel.toJSON())
+          .then(
+            (value) => {
+              _imageFromNetwork = null,
+              description = null,
+              Navigator.of(context).pop()
+            },
+          );
+    }
+    return null;
   }
 
-  void executeAll() {
-    getImageFromGallery()
-        .then((value) => value ? uploadNewPic() : print('error'));
+  void executeAll(context) {
+    getImageFromGallery().then(
+      (bool gotImage) {
+        if (gotImage) {
+          imageUploaded = UploadImage.uploading;
+          notifyListeners();
+          uploadNewPic().then(
+            (bool uploaded) {
+              if (uploaded) {
+                imageUploaded = UploadImage.notUploading;
+                notifyListeners();
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Image is uploaded successfuly!'),
+                  ),
+                );
+              } else {
+                print('error');
+                imageUploaded = UploadImage.notUploading;
+                notifyListeners();
+              }
+            },
+          );
+        } else {
+          print('There was an error');
+        }
+      },
+    );
   }
 
   Stream getAllActivities() {
@@ -88,3 +120,5 @@ class ActivityBloc with ChangeNotifier {
     );
   }
 }
+
+enum UploadImage { notUploading, uploading }

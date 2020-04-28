@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:volcano/Components/ActivitiesComponents/handshakes_add.dart';
 
 class ActivitiesDetails extends StatelessWidget {
@@ -29,12 +31,27 @@ class ActivitiesDetails extends StatelessWidget {
                 ),
                 SizedBox(height: 40),
                 Container(
-                  child: Text(_getTime()),
+                  child: Column(
+                    children: <Widget>[
+                      FaIcon(FontAwesomeIcons.clock, color: Colors.amber[100]),
+                      Text(
+                        _getTime(),
+                        style: GoogleFonts.openSans(color: Colors.purple[100]),
+                      ),
+                    ],
+                  ),
                 ),
+                SizedBox(height: 50),
                 Container(
-                  child:
-                      Text('${snapshot.data.documents[index]['description']}'),
+                  child: Center(
+                    child: Text(
+                      '${snapshot.data.documents[index]['description']}',
+                      style: GoogleFonts.openSans(fontSize: 21),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
+                SizedBox(height: 50),
                 SafeArea(
                   child: Align(
                     alignment: Alignment.bottomRight,

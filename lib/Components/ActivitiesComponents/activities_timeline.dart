@@ -11,7 +11,7 @@ class ActivitiesTimeLine extends StatelessWidget {
   ActivitiesTimeLine({@required this.index, @required this.snapshot});
   @override
   Widget build(BuildContext context) {
-    print(index);
+   
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff303030),
