@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
 import 'package:provider/provider.dart';
 import 'package:volcano/Components/ActivitiesComponents/activities_timeline.dart';
+import 'package:volcano/Components/ActivitiesComponents/activity_avatar.dart';
 import 'package:volcano/Provider/ActivitiesBloc/activity_bloc.dart';
 
 class AllActivities extends StatelessWidget {
@@ -41,12 +42,9 @@ class AllActivities extends StatelessWidget {
                           top: 20.0, bottom: 20.0, left: 10.0),
                       child: Stack(
                         children: <Widget>[
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.black,
-                              child: Text('$index'),
-                            ),
+                          ActivityAvatar(
+                            index: index,
+                            uid: snapshot.data.documents[index]['userUID'],
                           ),
                           Align(
                             alignment: Alignment.center,

@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:nav_router/nav_router.dart'; 
+import 'package:nav_router/nav_router.dart';
+
 class Splash extends StatefulWidget {
   final Widget child;
   Splash({this.child});
@@ -25,7 +26,10 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Center(
         child: Container(
-          child: FlareActor('assets/rive/splash.flr' , animation: 'Untitled',),
+          child: FlareActor(
+            'assets/rive/splash.flr',
+            animation: 'Untitled',
+          ),
         ),
       ),
     );

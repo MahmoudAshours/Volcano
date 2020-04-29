@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.0
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -15,8 +15,7 @@ dependencies:
   firebase_core: ^0.4.4+3
   firebase_auth: ^0.16.0
   firebase_storage: ^3.1.5
-  cloud_firestore: ^0.13.5
-  flutter_cube: ^0.0.5
+  cloud_firestore: ^0.13.5 
   spotlightnavbar: ^0.0.5
   nav_router: ^0.0.5
   shared_preferences: ^0.5.6+3
@@ -34,6 +33,7 @@ dependencies:
   step_progress_indicator: ^0.2.2+5
   flutter_native_splash: ^0.1.9
   flutter_launcher_icons: ^0.7.5
+  dartdoc: ^0.31.0
 
 flutter_native_splash:
   image: assets/images/splash.png
@@ -54,7 +54,5 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/brain/
-    - assets/Cube/
     - assets/images/
     - assets/rive/

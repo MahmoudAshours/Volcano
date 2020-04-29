@@ -61,13 +61,16 @@ class ArticleDetails extends StatelessWidget {
           SliverToBoxAdapter(
             child: SizedBox(
               child: SafeArea(
-                              child: SelectableText(
-                  '${data['description']}',
-                  style: GoogleFonts.openSans(
-                    color: Colors.white70,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 22,
-                    letterSpacing: 1.3,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SelectableText(
+                    '${data['description']}',
+                    style: GoogleFonts.openSans(
+                      color: Colors.white70,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 22,
+                      letterSpacing: 1.3,
+                    ),
                   ),
                 ),
               ),
