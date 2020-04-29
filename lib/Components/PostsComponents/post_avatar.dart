@@ -6,6 +6,7 @@ class PostAvatar extends StatelessWidget {
   final int index;
   final String uid;
   PostAvatar({@required this.index, @required this.uid});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,7 +15,7 @@ class PostAvatar extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: CircleAvatar(
           backgroundColor: Colors.black,
-          child: Text('$index'),
+          child: Text('${uid.substring(0, 2).toUpperCase()}'),
         ),
       ),
     );

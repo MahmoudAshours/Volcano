@@ -108,6 +108,14 @@ class ActivityBloc with ChangeNotifier {
         .snapshots();
   }
 
+  Stream getUserActivities({userID}) {
+    return Firestore.instance
+        .collectionGroup('activities')
+        .where('userUID', isEqualTo: userID ?? '$_userUID')
+        .orderBy('time', descending: true)
+        .snapshots();
+  }
+
   Future addHandShake(postRef) async {
     await Firestore.instance.runTransaction(
       (transactionHandler) async {

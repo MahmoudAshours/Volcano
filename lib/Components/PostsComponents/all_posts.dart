@@ -8,7 +8,7 @@ import 'package:volcano/Provider/PostsBloc/posts_bloc.dart';
 import 'package:volcano/Screens/post_details.dart';
 import 'package:volcano/Utils/spiner.dart';
 
-class AllPosts extends StatelessWidget { 
+class AllPosts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<PostsBloc>(context);
@@ -24,61 +24,73 @@ class AllPosts extends StatelessWidget {
                 ),
               ),
             )
-          : SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) => GestureDetector(
-                  onTap: () => routePush(
-                    PostDetails(snapshot: snapshot, index: index),
-                    RouterType.fade,
+          : snapshot.data.documents.length == 0
+              ? SliverToBoxAdapter(
+                  child: Center(
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Text('There is no posts yet'),
+                      ),
+                    ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20.0,
-                      bottom: 20.0,
-                      left: 10.0,
-                    ),
-                    child: Stack(
-                      children: <Widget>[
-                        PostAvatar(
-                          index: index,
-                          uid: snapshot.data.documents[index]['userID'],
+                )
+              : SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) => GestureDetector(
+                      onTap: () => routePush(
+                        PostDetails(snapshot: snapshot, index: index),
+                        RouterType.fade,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 20.0,
+                          bottom: 20.0,
+                          left: 10.0,
                         ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 1.5,
-                            height: 165.25,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
+                        child: Stack(
+                          children: <Widget>[
+                            PostAvatar(
+                              index: index,
+                              uid: snapshot.data.documents[index]['userID'],
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Text(
-                                    '${snapshot.data.documents[index]['title']}',
-                                    maxLines: 2,
-                                    overflow: TextOverflow.fade,
-                                    style: GoogleFonts.openSans(
-                                        color: Colors.purple[200]),
-                                  ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width / 1.5,
+                                height: 165.25,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(30),
                                 ),
-                                SizedBox(height: 50),
-                                PostReacts(snapshot: snapshot, index: index)
-                              ],
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
+                                      child: Text(
+                                        '${snapshot.data.documents[index]['title']}',
+                                        maxLines: 2,
+                                        overflow: TextOverflow.fade,
+                                        style: GoogleFonts.openSans(
+                                            color: Colors.purple[200]),
+                                      ),
+                                    ),
+                                    SizedBox(height: 50),
+                                    PostReacts(snapshot: snapshot, index: index)
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
+                    childCount: snapshot.data.documents.length,
                   ),
                 ),
-                childCount: snapshot.data.documents.length,
-              ),
-            ),
     );
   }
 }

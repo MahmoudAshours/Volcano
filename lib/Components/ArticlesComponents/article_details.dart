@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ArticleDetails extends StatelessWidget {
   final data;
@@ -11,7 +12,7 @@ class ArticleDetails extends StatelessWidget {
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: Hero(
-              tag: '$data',
+              tag: '${data['image']}',
               child: SafeArea(
                 child: Container(
                   height: 300,
@@ -27,8 +28,10 @@ class ArticleDetails extends StatelessWidget {
                           type: MaterialType.transparency,
                           child: InkWell(
                             onTap: () => Navigator.of(context).pop(),
-                            child: FaIcon(FontAwesomeIcons.chevronLeft,
-                                color: Colors.white),
+                            child: FaIcon(
+                              FontAwesomeIcons.chevronLeft,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       )
@@ -39,14 +42,36 @@ class ArticleDetails extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: SizedBox(child: Text('${data['title']}')),
+            child: SizedBox(
+              child: SelectableText(
+                '${data['title']}',
+                style: GoogleFonts.openSans(
+                  color: Colors.purple[100],
+                  fontWeight: FontWeight.w200,
+                  fontSize: 40,
+                  letterSpacing: 1.3,
+                ),
+              ),
+            ),
           ),
           SliverToBoxAdapter(
             child: SizedBox(child: Divider()),
           ),
           SliverPadding(padding: EdgeInsets.only(top: 20)),
           SliverToBoxAdapter(
-            child: SizedBox(child: Text('${data['description']}')),
+            child: SizedBox(
+              child: SafeArea(
+                              child: SelectableText(
+                  '${data['description']}',
+                  style: GoogleFonts.openSans(
+                    color: Colors.white70,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22,
+                    letterSpacing: 1.3,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

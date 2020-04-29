@@ -10,7 +10,7 @@ class AllArticles extends StatelessWidget {
     return Consumer<ArticleBloc>(
       builder: (_, _bloc, __) => StreamBuilder(
         stream: _bloc.getArticles,
-        builder: (_, snapshot) => snapshot.hasData
+        builder: (_, AsyncSnapshot snapshot) => snapshot.hasData
             ? SliverGrid.count(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
@@ -18,11 +18,12 @@ class AllArticles extends StatelessWidget {
                 children: snapshot.data.documents
                     .map<Widget>(
                       (e) => GestureDetector(
-                        onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (_) => ArticleDetails(data: e))),
+                        onTap: () =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => ArticleDetails(data: e),
+                        )),
                         child: Hero(
-                          tag: '$e',
+                          tag: '${e['image']}',
                           child: Container(
                             child: Image.network('${e['image']}'),
                           ),
