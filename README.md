@@ -4,6 +4,9 @@ There is hope, even when your brain tells you there isn't.
 
 ![Preview](https://i.ibb.co/JB3pwHX/splash-iphonesespacegrey-portrait.png)
 
+## Descrption of problem 
+In this era of time, particularity in our society, Depression became a real serious problem that needs to be understood. So our challenge was to make a platform for depressed people to make the word depression more understood, to make them share thoughts and talk and to make them feel their own achievements once again. So our solution was represented in a 3-axis model. Mobile App helps depressed people to Read more and learn about depression, Share thoughts together, Share own achievements.
+
 ## What really matters 
 
 There are so many problems that can be solved using software engineering.  
